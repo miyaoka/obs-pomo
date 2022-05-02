@@ -6,7 +6,6 @@ import ThePomo from "./components/ThePomo.vue";
   <header>
     <div class="wrapper">
       <ThePomo />
-      <HelloWorld msg="You did it!" />
     </div>
   </header>
 </template>

@@ -2,32 +2,31 @@ import { useTimestamp } from "@vueuse/core";
 import { computed, ref, watch, type Ref } from "vue";
 
 type Options = {
-  workingTime?: number;
-  restTime?: number;
+  workTime?: number;
+  breakTime?: number;
   opening: Ref<HTMLAudioElement | null>;
   closing: Ref<HTMLAudioElement | null>;
 };
 
 const defaultOptions = {
-  workingTime: 25 * 60, // sec
-  restTime: 5 * 60, // sec
+  workTiem: 25 * 60, // sec
+  breakTime: 5 * 60, // sec
 };
 
 const ms = 1000;
 
 export const usePomo = (options: Options) => {
-  const { timestamp, pause, resume } = useTimestamp({
+  const timestamp = useTimestamp({
     interval: 100,
-    controls: true,
   });
 
-  const workingTime = (options.workingTime ?? defaultOptions.workingTime) * ms;
-  const restTime = (options.restTime ?? defaultOptions.restTime) * ms;
+  const workTiem = (options.workTime ?? defaultOptions.workTiem) * ms;
+  const breakTime = (options.breakTime ?? defaultOptions.breakTime) * ms;
 
   const startTime = ref(new Date().getTime());
   const isWorking = ref(true);
 
-  const targetTime = computed(() => (isWorking.value ? workingTime : restTime));
+  const targetTime = computed(() => (isWorking.value ? workTiem : breakTime));
 
   const elapsedTime = computed(() => {
     return timestamp.value - startTime.value;

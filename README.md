@@ -13,3 +13,8 @@ obs 内蔵ブラウザで表示する用のポモドーロタイマー
   - volume: 作業開始、終了時のジングル音量(0-1) / デフォルト: 0.5
 - サンプル
   - https://obs-pomo.vercel.app/?worktime=50&breaktime=10&volume=0.2&worklabel=🏋️&breaklabel=🏝️
+
+## 使用音源
+
+- https://dova-s.jp/bgm/play8568.html
+- https://dova-s.jp/bgm/play15755.html

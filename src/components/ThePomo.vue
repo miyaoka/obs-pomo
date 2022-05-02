@@ -67,13 +67,13 @@ const currentLabel = computed(() => {
 <style scoped>
 .currentMode {
   font-weight: 700;
-  font-size: 60px;
+  font-size: 120px;
   color: #fff;
 }
 
 .timeLeft {
   font-weight: 700;
-  font-size: 96px;
+  font-size: 192px;
   color: #fff;
 }
 </style>

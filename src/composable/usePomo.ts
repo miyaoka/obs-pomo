@@ -20,13 +20,13 @@ export const usePomo = (options: Options) => {
     interval: 100,
   });
 
-  const workTiem = (options.workTime ?? defaultOptions.workTiem) * ms;
+  const workTime = (options.workTime ?? defaultOptions.workTiem) * ms;
   const breakTime = (options.breakTime ?? defaultOptions.breakTime) * ms;
 
   const startTime = ref(new Date().getTime());
   const isWorking = ref(true);
 
-  const targetTime = computed(() => (isWorking.value ? workTiem : breakTime));
+  const targetTime = computed(() => (isWorking.value ? workTime : breakTime));
 
   const elapsedTime = computed(() => {
     return timestamp.value - startTime.value;

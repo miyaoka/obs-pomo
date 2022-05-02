@@ -12,4 +12,4 @@ obs 内蔵ブラウザで表示する用のポモドーロタイマー
   - breaklabel: 休憩中に表示するラベル / デフォルト: "break"
   - volume: 作業開始、終了時のジングル音量(0-1) / デフォルト: 0.5
 - サンプル
-  - https://obs-pomo.vercel.app/?worktime=50&breaktime=10&volume=0.2
+  - https://obs-pomo.vercel.app/?worktime=50&breaktime=10&volume=0.2&worklabel=🏋️&breaklabel=🏝️

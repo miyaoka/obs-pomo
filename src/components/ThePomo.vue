@@ -56,8 +56,8 @@ const currentLabel = computed(() => {
 </script>
 
 <template>
-  <audio src="/src/assets/weather_tomorrow.mp3" ref="closing" />
-  <audio src="/src/assets/日常系アニメ風ジングル.mp3" ref="opening" />
+  <audio src="/audio/weather_tomorrow.mp3" ref="closing" />
+  <audio src="/audio/日常系アニメ風ジングル.mp3" ref="opening" />
   <div class="currentMode">{{ currentLabel }}</div>
   <div class="timeLeft">{{ formedTime }}</div>
   <!-- <button @click="playToggle">play/stop</button> -->

@@ -5,7 +5,7 @@ import { computed, ref } from "vue";
 const closing = ref<HTMLAudioElement | null>(null);
 const opening = ref<HTMLAudioElement | null>(null);
 
-const { timeLeft, isWorking } = usePomo({
+const { timeLeft, isWorking, playNext } = usePomo({
   workTime: 50 * 60,
   breakTime: 10 * 60,
   opening,
@@ -26,6 +26,8 @@ const formedTime = computed(() => {
   <audio src="/src/assets/日常系アニメ風ジングル.mp3" ref="opening" />
   <div class="currentMode">{{ isWorking ? "work" : "break" }}</div>
   <div class="timeLeft">{{ formedTime }}</div>
+
+  <button @click="playNext">skip</button>
 </template>
 
 <style scoped>

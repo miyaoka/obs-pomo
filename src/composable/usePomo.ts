@@ -41,17 +41,22 @@ export const usePomo = (options: Options) => {
     audio.play();
   };
 
-  watch(timeLeft, (left) => {
-    if (left > 0) return;
-
+  const playNext = () => {
     play(isWorking.value ? options.closing.value : options.opening.value);
 
     startTime.value = new Date().getTime();
     isWorking.value = !isWorking.value;
+  };
+
+  watch(timeLeft, (left) => {
+    if (left > 0) return;
+
+    playNext();
   });
 
   return {
     timeLeft,
     isWorking,
+    playNext,
   };
 };

@@ -18,9 +18,7 @@ const defaultOptions = {
 const ms = 1000;
 
 export const usePomo = (options: Options) => {
-  const timestamp = useTimestamp({
-    interval: 100,
-  });
+  const timestamp = useTimestamp();
 
   const workTime = (options.workTime ?? defaultOptions.workTiem) * ms;
   const breakTime = (options.breakTime ?? defaultOptions.breakTime) * ms;

@@ -6,8 +6,8 @@ const closing = ref<HTMLAudioElement | null>(null);
 const opening = ref<HTMLAudioElement | null>(null);
 
 const { timeLeft, isWorking } = usePomo({
-  workTime: 0.5 * 60,
-  breakTime: 0.5 * 60,
+  workTime: 50 * 60,
+  breakTime: 10 * 60,
   opening,
   closing,
 });

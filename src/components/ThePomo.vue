@@ -57,9 +57,9 @@ const currentLabel = computed(() => {
 
 <template>
   <div
-    class="container relative flex flex-col select-none leading-none items-center"
+    class="container font-mono relative flex flex-col select-none leading-none items-center"
   >
-    <div class="currentMode text-[120px] text-white font-bold">
+    <div class="currentMode text-[96px] text-white font-bold">
       {{ currentLabel }}
     </div>
     <div class="timeLeft text-[192px] text-white font-bold">
@@ -81,4 +81,9 @@ const currentLabel = computed(() => {
   <audio src="/audio/日常系アニメ風ジングル.mp3" ref="opening" />
 </template>
 
-<style scoped></style>
+<style scoped>
+.container {
+  text-shadow: 0 0 8px #000;
+  -webkit-text-stroke: 2px #000000;
+}
+</style>

@@ -56,11 +56,8 @@ const currentLabel = computed(() => {
 </script>
 
 <template>
-  <audio src="/audio/weather_tomorrow.mp3" ref="closing" />
-  <audio src="/audio/日常系アニメ風ジングル.mp3" ref="opening" />
   <div
-    class="container flex flex-col select-none leading-none items-center"
-    @click="togglePlay"
+    class="container relative flex flex-col select-none leading-none items-center"
   >
     <div class="currentMode text-[120px] text-white font-bold">
       {{ currentLabel }}
@@ -68,13 +65,20 @@ const currentLabel = computed(() => {
     <div class="timeLeft text-[192px] text-white font-bold">
       {{ formedTime }}
     </div>
-    <div class="control">
-      <button @click="playNext">skip</button>
-      <button @click="togglePlay">togglePlay</button>
+    <div
+      class="control absolute inset-0 flex items-center justify-center gap-8 bg-[rgba(0,0,0,.4)] opacity-0 hover:opacity-100"
+    >
+      <button @click="togglePlay" class="p-8 bg-white rounded-full text-4xl">
+        {{ isPlaying ? "stop" : "play" }}
+      </button>
+      <button @click="playNext" class="p-8 bg-white rounded-full text-4xl">
+        skip
+      </button>
     </div>
   </div>
-  <div>{{ isPlaying ? "playing" : "stop" }}</div>
-  <!-- <button @click="playToggle">play/stop</button> -->
+
+  <audio src="/audio/weather_tomorrow.mp3" ref="closing" />
+  <audio src="/audio/日常系アニメ風ジングル.mp3" ref="opening" />
 </template>
 
 <style scoped></style>

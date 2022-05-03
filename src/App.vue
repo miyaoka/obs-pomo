@@ -8,6 +8,6 @@ import ThePomo from "./components/ThePomo.vue";
 
 <style>
 body {
-  background: #999;
+  background-color: #666;
 }
 </style>

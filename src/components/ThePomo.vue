@@ -73,6 +73,9 @@ const currentLabel = computed(() => {
   font-size: 120px;
   color: #fff;
 }
+.container {
+  user-select: none;
+}
 
 .timeLeft {
   font-weight: 700;

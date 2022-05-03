@@ -31,7 +31,7 @@ const parseParamTime = (input: string | string[]) => {
   return num * 60;
 };
 
-const { timeLeft, isWorking, playNext } = usePomo({
+const { timeLeft, isWorking, playNext, togglePlay, isPlaying } = usePomo({
   opening,
   closing,
   volume: parseParamNumber(params.volume),
@@ -58,8 +58,10 @@ const currentLabel = computed(() => {
 <template>
   <audio src="/audio/weather_tomorrow.mp3" ref="closing" />
   <audio src="/audio/日常系アニメ風ジングル.mp3" ref="opening" />
-  <div class="currentMode">{{ currentLabel }}</div>
-  <div class="timeLeft">{{ formedTime }}</div>
+  <div class="container" @click="togglePlay">
+    <div class="currentMode">{{ currentLabel }}</div>
+    <div class="timeLeft">{{ formedTime }}</div>
+  </div>
   <!-- <button @click="playToggle">play/stop</button> -->
   <button @click="playNext">skip</button>
 </template>

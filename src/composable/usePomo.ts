@@ -17,15 +17,19 @@ const defaultOptions = {
 
 const ms = 1000;
 
+const getNow = () => new Date().getTime();
+
 export const usePomo = (options: Options) => {
-  const timestamp = useTimestamp();
+  const { timestamp, resume, pause } = useTimestamp({ controls: true });
 
   const workTime = (options.workTime ?? defaultOptions.workTiem) * ms;
   const breakTime = (options.breakTime ?? defaultOptions.breakTime) * ms;
   const volume = options.volume ?? defaultOptions.volume;
 
-  const startTime = ref(new Date().getTime());
+  const startTime = ref(getNow());
+  const pauseTime = ref(getNow());
   const isWorking = ref(true);
+  const isPlaying = ref(false);
 
   const targetTime = computed(() => (isWorking.value ? workTime : breakTime));
 
@@ -45,9 +49,29 @@ export const usePomo = (options: Options) => {
   const playNext = () => {
     play(isWorking.value ? options.closing.value : options.opening.value);
 
-    startTime.value = new Date().getTime();
+    startTime.value = getNow();
     isWorking.value = !isWorking.value;
   };
+
+  const togglePlay = () => {
+    isPlaying.value = !isPlaying.value;
+  };
+
+  watch(
+    isPlaying,
+    (curr) => {
+      if (curr) {
+        resume();
+        startTime.value += getNow() - pauseTime.value;
+      } else {
+        pause();
+        pauseTime.value = getNow();
+      }
+    },
+    {
+      immediate: true,
+    }
+  );
 
   watch(timeLeft, (left) => {
     if (left > 0) return;
@@ -58,6 +82,8 @@ export const usePomo = (options: Options) => {
   return {
     timeLeft,
     isWorking,
+    isPlaying,
     playNext,
+    togglePlay,
   };
 };

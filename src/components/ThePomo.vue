@@ -43,7 +43,7 @@ const workLabel = parseParamString(params.worklabel) ?? "work";
 const breakLabel = parseParamString(params.breaklabel) ?? "break";
 
 const formedTime = computed(() => {
-  const intLeftTime = Math.round(timeLeft.value / 1000);
+  const intLeftTime = Math.floor(timeLeft.value / 1000);
   const mm = String(Math.floor(intLeftTime / 60));
   const ss = String(Math.floor(intLeftTime % 60));
 

@@ -49,8 +49,13 @@ export const usePomo = (options: Options) => {
   const playNext = () => {
     play(isWorking.value ? options.closing.value : options.opening.value);
 
-    startTime.value = getNow();
+    startTime.value = pauseTime.value = getNow();
     isWorking.value = !isWorking.value;
+    if (!isPlaying.value) {
+      // timestampを一度更新させる
+      resume();
+      pause();
+    }
   };
 
   const togglePlay = () => {

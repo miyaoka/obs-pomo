@@ -43,7 +43,7 @@ const workLabel = parseParamString(params.worklabel) ?? "work";
 const breakLabel = parseParamString(params.breaklabel) ?? "break";
 
 const formedTime = computed(() => {
-  const intLeftTime = Math.ceil(timeLeft.value / 1000);
+  const intLeftTime = Math.round(timeLeft.value / 1000);
   const mm = String(Math.floor(intLeftTime / 60));
   const ss = String(Math.floor(intLeftTime % 60));
 
@@ -62,6 +62,7 @@ const currentLabel = computed(() => {
     <div class="currentMode">{{ currentLabel }}</div>
     <div class="timeLeft">{{ formedTime }}</div>
   </div>
+  <div>{{ isPlaying ? "playing" : "stop" }}</div>
   <!-- <button @click="playToggle">play/stop</button> -->
   <button @click="playNext">skip</button>
 </template>
